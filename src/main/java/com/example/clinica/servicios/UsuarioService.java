@@ -51,4 +51,18 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    public boolean validarLogin(String correo, String password) {
+        return usuarioRepository.findByCorreoAndPassword(correo, password).isPresent();
+    }
+
+    public Optional<Usuarios> obtenerPorCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo);
+    }
+
+    public boolean correoExiste(String correo) {
+        return usuarioRepository.existsByCorreo(correo);
+    }
+
+
+
 }
